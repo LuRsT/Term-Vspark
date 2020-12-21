@@ -108,7 +108,7 @@ sub _max_label_width {
 
     return 0 if scalar @labels == 0;
 
-    my @lengths = sort map { length $_ } @labels;
+    my @lengths = sort { $a <=> $b } map { length $_ } @labels;
     return $lengths[-1] + 2; # + 2 because of 1 space before and after label
 }
 
