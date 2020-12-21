@@ -118,4 +118,22 @@ $graph = show_graph(
 
 is $graph, $expected, "example from the synopsis";
 
+$expected = <<EOF;
+                foo 
+                  a ████████▋
+                bar █████████████████▎
+ potato is not nice █████████████████████████▊
+                  b ██████████████████████████████████▍
+                  c ██████████████████████████████████████████▉
+EOF
+
+$graph = show_graph(
+        values  => [0,1,2,3,4,5],
+        labels  => ['foo','a','bar','potato is not nice','b','c'],
+        max     => 7,
+        columns => 80,
+    );
+
+is $graph, $expected, "example with different length of labels";
+
 done_testing;
